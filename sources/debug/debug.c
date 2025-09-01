@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 16:45:06 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:51:15 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void	print_player(t_player player)
 //handler to show content to the main struct
 void	debug_struct(t_cub *cub)
 {
+	if (!cub->debug_mode)
+		return ;
 	print_textures(cub);
 	print_planes(cub);
 	print_map_values(cub->map);

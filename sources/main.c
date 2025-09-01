@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 15:35:39 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 18:00:56 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	init_cub(t_cub *cub)
 	cub->map.w = 0;
 	cub->map.h = 0;
 	cub->map.is_invalid = 0;
+	cub->debug_mode = 1;
 }
 
 static void	free_cub(t_cub *cub)

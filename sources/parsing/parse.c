@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 17:13:59 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:52:20 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ bool	parsing(t_cub *cub, char **av)
 	if (validate_closed_map(cub, cub->player.y, cub->player.x))
 		return (1);
 	cub->map.point[cub->player.y][cub->player.x] = '0';
-	debug_map_final(cub->map);
+	debug_map_final(cub);
 	return (0);
 }

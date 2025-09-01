@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/09/01 16:12:46 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:48:40 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_cub
 	t_bg		bg;
 	t_player	player;
 	t_map		map;
+	bool		debug_mode;
 }	t_cub;
 
 //parse

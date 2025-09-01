@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 16:16:51 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 17:54:30 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ bool	validate_closed_map(t_cub *cub, int y, int x)
 	if (copy_map_for_floodfill(cub->map, &copy))
 		return (1);
 	flood_fill(&cub->map, copy, y, x);
-	debug_map_floodfill(copy, cub->map.is_invalid);
+	debug_map_floodfill(cub->debug_mode, copy, cub->map.is_invalid);
 	return (ft_freearray(copy), cub->map.is_invalid);
 }
