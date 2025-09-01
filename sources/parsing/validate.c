@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azrulsaleh <azrulsaleh@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 01:04:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 00:24:52 by azrulsaleh       ###   ########.fr       */
+/*   Updated: 2025/09/01 16:15:17 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ static int	validate_map_chars(char **map)
 }
 
 //gets number of valid characters in read line
-static int	get_line_width(char **map, int x)
+static int	get_line_width(char **map, int y)
 {
 	int	idx;
-	int	y;
+	int	x;
 
 	idx = 0;
-	y = 0;
-	while (map[x][y])
+	x = 0;
+	while (map[y][x])
 	{
-		if (map[x][y] != ' ')
-			idx = y;
-		y++;
+		if (map[y][x] != ' ')
+			idx = x;
+		x++;
 	}
 	return (idx + 1);
 }
@@ -64,7 +64,7 @@ static int	get_map_dimensions(t_cub *cub)
 {
 	int	idx;
 	int	start;
-	int	y;
+	int	x;
 
 	idx = 0;
 	start = INT_MAX;
@@ -73,12 +73,12 @@ static int	get_map_dimensions(t_cub *cub)
 		idx = get_line_width(cub->map.point, cub->map.h);
 		if (idx > cub->map.w)
 			cub->map.w = idx;
-		y = 0;
-		while (cub->map.point[cub->map.h][y] == ' '
-			|| cub->map.point[cub->map.h][y] == '\t')
-			y++;
-		if (y < start)
-			start = y;
+		x = 0;
+		while (cub->map.point[cub->map.h][x] == ' '
+			|| cub->map.point[cub->map.h][x] == '\t')
+			x++;
+		if (x < start)
+			start = x;
 		cub->map.h++;
 	}
 	cub->map.w -= start;
@@ -89,22 +89,22 @@ static int	get_map_dimensions(t_cub *cub)
 static int	make_map_rectangular(t_cub *cub, int start)
 {
 	char	*line;
-	int		x;
+	int		y;
 	int		len;
 
-	x = 0;
-	while (x < cub->map.h)
+	y = 0;
+	while (y < cub->map.h)
 	{
 		line = malloc(cub->map.w + 1);
 		if (!line)
 			return (print_error("Malloc failed in make_map_rectangular"));
-		len = get_line_width(cub->map.point, x);
+		len = get_line_width(cub->map.point, y);
 		ft_memset(line, ' ', cub->map.w);
 		line[cub->map.w] = '\0';
-		ft_memcpy_rng(line, cub->map.point[x], start, len - start);
-		free(cub->map.point[x]);
-		cub->map.point[x] = line;
-		x++;
+		ft_memcpy_rng(line, cub->map.point[y], start, len - start);
+		free(cub->map.point[y]);
+		cub->map.point[y] = line;
+		y++;
 	}
 	return (0);
 }

@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azrulsaleh <azrulsaleh@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/09/01 03:24:34 by azrulsaleh       ###   ########.fr       */
+/*   Updated: 2025/09/01 16:12:46 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-//floor/ceiling rgb
-typedef struct s_rgb
+typedef struct s_tex
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_rgb;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+}	t_tex;
+
+//floor/ceiling color
+typedef struct s_bg
+{
+	int	floor[3];
+	int	ceiling[3];
+}	t_bg;
 
 //player position
 typedef struct s_player
@@ -35,18 +42,14 @@ typedef struct s_map
 	char	**point;
 	int		w;
 	int		h;
-	bool	is_valid;
+	bool	is_invalid;
 }	t_map;
 
 //program struct
 typedef struct s_cub
 {
-	char		*no_tex;
-	char		*so_tex;
-	char		*we_tex;
-	char		*ea_tex;
-	t_rgb		floor;
-	t_rgb		ceiling;
+	t_tex		tex;
+	t_bg		bg;
 	t_player	player;
 	t_map		map;
 }	t_cub;
@@ -72,6 +75,6 @@ int		validate_map(t_cub *cub);
 void	set_player_values(t_cub *cub);
 
 //floodfill
-bool validate_closed_map(t_cub *cub, int x, int y);
+bool	validate_closed_map(t_cub *cub, int y, int x);
 
 #endif

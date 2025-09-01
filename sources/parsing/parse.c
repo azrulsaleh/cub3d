@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azrulsaleh <azrulsaleh@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 02:34:56 by azrulsaleh       ###   ########.fr       */
+/*   Updated: 2025/09/01 17:13:59 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,27 @@ static bool	check_extension(const char *file)
 }
 
 //removes space, tabs and newlines from start and end depending on line content
-static bool	trim_line(char **line)
+static bool	trim_line(char **line, char *trim)
 {
-	char	*temp;
-
-	temp = ft_strtrim(*line, " \t\n");
-	if (!temp)
+	if (!trim)
 		return (1);
-	if (is_line_texture(temp) || is_line_color(temp))
+	if (is_line_texture(trim) || is_line_color(trim))
 	{
 		free(*line);
-		*line = temp;
+		*line = trim;
 	}
-	else if (temp[0] != '\0')
+	else if (trim[0] != '\0')
 	{
-		free(temp);
-		temp = ft_strtrim(*line, "\t\n");
-		if (!temp)
+		free(trim);
+		trim = ft_strtrim(*line, "\t\n");
+		if (!trim)
 			return (1);
 		free(*line);
-		*line = temp;
+		*line = trim;
 	}
 	else
 	{
+		free(trim);
 		free(*line);
 		*line = NULL;
 	}
@@ -69,7 +67,7 @@ static bool	trim_line(char **line)
 //parses info appropriately when reading line by line from cub file
 static bool	handle_content_loop(t_cub *cub, char **line)
 {
-	if (trim_line(line))
+	if (trim_line(line, ft_strtrim(*line, " \t\n")))
 		return (print_error("Failed ft_strtrim in trim_line"));
 	if (!(*line))
 		return (0);
@@ -123,7 +121,9 @@ bool	parsing(t_cub *cub, char **av)
 		return (1);
 	set_player_values(cub);
 	debug_struct(cub);
-	if (validate_closed_map(cub, cub->player.x, cub->player.y))
+	if (validate_closed_map(cub, cub->player.y, cub->player.x))
 		return (1);
+	cub->map.point[cub->player.y][cub->player.x] = '0';
+	debug_map_final(cub->map);
 	return (0);
 }

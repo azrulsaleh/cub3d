@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azrulsaleh <azrulsaleh@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/08/31 22:18:36 by azrulsaleh       ###   ########.fr       */
+/*   Updated: 2025/09/01 15:36:26 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static bool	assign_texture(char **dest, char *line)
 bool	handle_texture_line(t_cub *cub, char *line)
 {
 	if (!ft_strncmp(line, "NO", 2))
-		return (assign_texture(&cub->no_tex, line));
+		return (assign_texture(&cub->tex.no, line));
 	else if (!ft_strncmp(line, "SO", 2))
-		return (assign_texture(&cub->so_tex, line));
+		return (assign_texture(&cub->tex.so, line));
 	else if (!ft_strncmp(line, "WE", 2))
-		return (assign_texture(&cub->we_tex, line));
+		return (assign_texture(&cub->tex.we, line));
 	else if (!ft_strncmp(line, "EA", 2))
-		return (assign_texture(&cub->ea_tex, line));
+		return (assign_texture(&cub->tex.ea, line));
 	return (1);
 }

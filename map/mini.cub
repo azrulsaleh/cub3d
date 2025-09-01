@@ -3,11 +3,11 @@ SO ./path_to_the_south_texture.xpm
 WE ./path_to_the_west_texture.xpm
 EA ./path_to_the_east_texture.xpm
 
-F 0,0,0
-C 0,0,255
+F 42,42,42
+C 69,169,255
 
 11111
 10001
-10N01
 10001
+1N001
 11111

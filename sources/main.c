@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azrulsaleh <azrulsaleh@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 03:24:48 by azrulsaleh       ###   ########.fr       */
+/*   Updated: 2025/09/01 15:35:39 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,35 @@
 //initialize cub struct
 static void	init_cub(t_cub *cub)
 {
-	cub->no_tex = NULL;
-	cub->so_tex = NULL;
-	cub->we_tex = NULL;
-	cub->ea_tex = NULL;
-	cub->floor.r = 0;
-	cub->floor.g = 0;
-	cub->floor.b = 0;
-	cub->ceiling.r = 0;
-	cub->ceiling.g = 0;
-	cub->ceiling.b = 0;
+	cub->tex.no = NULL;
+	cub->tex.so = NULL;
+	cub->tex.we = NULL;
+	cub->tex.ea = NULL;
+	cub->bg.floor[0] = 0;
+	cub->bg.floor[1] = 0;
+	cub->bg.floor[2] = 0;
+	cub->bg.ceiling[0] = 0;
+	cub->bg.ceiling[1] = 0;
+	cub->bg.ceiling[2] = 0;
 	cub->player.x = 0;
 	cub->player.y = 0;
 	cub->player.dir = '\0';
 	cub->map.point = NULL;
 	cub->map.w = 0;
 	cub->map.h = 0;
-	cub->map.is_valid = 1;
+	cub->map.is_invalid = 0;
 }
 
 static void	free_cub(t_cub *cub)
 {
-	if (cub->no_tex)
-		free(cub->no_tex);
-	if (cub->so_tex)
-		free(cub->so_tex);
-	if (cub->we_tex)
-		free(cub->we_tex);
-	if (cub->ea_tex)
-		free(cub->ea_tex);
+	if (cub->tex.no)
+		free(cub->tex.no);
+	if (cub->tex.so)
+		free(cub->tex.so);
+	if (cub->tex.we)
+		free(cub->tex.we);
+	if (cub->tex.ea)
+		free(cub->tex.ea);
 	ft_freearray(cub->map.point);
 }
 
