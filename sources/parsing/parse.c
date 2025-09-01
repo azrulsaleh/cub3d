@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 17:52:20 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 18:19:23 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ static bool	handle_content_loop(t_cub *cub, char **line)
 		if (handle_texture_line(cub, *line))
 			return (1);
 	}
-	else if (is_line_color(*line))
+	else if (is_line_bg(*line))
 	{
-		if (handle_color_line(cub, *line))
+		if (handle_bg_line(cub, *line))
 			return (1);
 	}
 	else
@@ -101,6 +101,8 @@ static bool	parse_content(t_cub *cub, int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
+	if (validate_bg(cub->bg))
+		return (print_error("Insufficient color info"));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/09/01 17:48:40 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 18:18:42 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ bool	parsing(t_cub *cub, char **av);
 bool	is_line_texture(char *line);
 bool	handle_texture_line(t_cub *cub, char *line);
 
-//color
-bool	is_line_color(char *line);
-bool	handle_color_line(t_cub *cub, char *line);
+//bg
+bool	is_line_bg(char *line);
+bool	handle_bg_line(t_cub *cub, char *line);
+bool	validate_bg(t_bg bg);
 
 //map
 int		append_map_line(t_cub *cub, char *line);

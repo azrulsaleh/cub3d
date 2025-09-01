@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   bg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 17:04:09 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 18:18:54 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 //returns 1 if read line is floor or ceiling color
-bool	is_line_color(char *line)
+bool	is_line_bg(char *line)
 {
 	if (line[0] == 'F' || line[0] == 'C')
 		return (1);
@@ -42,7 +42,7 @@ static int	parse_rgb(char *rgb, int (*plane)[3])
 }
 
 //handler to get color to ceiling and floor information
-bool	handle_color_line(t_cub *cub, char *line)
+bool	handle_bg_line(t_cub *cub, char *line)
 {
 	char	*rgb;
 	int		status;
@@ -58,4 +58,10 @@ bool	handle_color_line(t_cub *cub, char *line)
 		print_error("Failed color validation");
 	free(rgb);
 	return (status);
+}
+
+bool	validate_bg(t_bg bg)
+{
+	return (bg.floor[0] == -1 || bg.floor[1] == -1 || bg.floor[2] == -1
+		|| bg.ceiling[0] == -1 || bg.ceiling[1] == -1 || bg.ceiling[2] == -1);
 }

@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 18:00:56 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/01 18:12:31 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	init_cub(t_cub *cub)
 	cub->tex.so = NULL;
 	cub->tex.we = NULL;
 	cub->tex.ea = NULL;
-	cub->bg.floor[0] = 0;
-	cub->bg.floor[1] = 0;
-	cub->bg.floor[2] = 0;
-	cub->bg.ceiling[0] = 0;
-	cub->bg.ceiling[1] = 0;
-	cub->bg.ceiling[2] = 0;
+	cub->bg.floor[0] = -1;
+	cub->bg.floor[1] = -1;
+	cub->bg.floor[2] = -1;
+	cub->bg.ceiling[0] = -1;
+	cub->bg.ceiling[1] = -1;
+	cub->bg.ceiling[2] = -1;
 	cub->player.x = 0;
 	cub->player.y = 0;
 	cub->player.dir = '\0';
