@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 18:18:54 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 12:48:52 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_line_bg(char *line)
 }
 
 //parses and stores color info into r, g and b components
-static int	parse_rgb(char *rgb, int (*plane)[3])
+static int	parse_rgb(char *rgb, int (*bg)[3])
 {
 	char	**split;
 	int		i;
@@ -32,11 +32,11 @@ static int	parse_rgb(char *rgb, int (*plane)[3])
 		i++;
 	if (i != 3)
 		return (ft_freearray(split), 1);
-	(*plane)[0] = ft_atoi(split[0]);
-	(*plane)[1] = ft_atoi(split[1]);
-	(*plane)[2] = ft_atoi(split[2]);
-	if ((*plane)[0] < 0 || (*plane)[0] > 255 || (*plane)[1] < 0
-		|| (*plane)[1] > 255 || (*plane)[2] < 0 || (*plane)[2] > 255)
+	(*bg)[0] = ft_atoi(split[0]);
+	(*bg)[1] = ft_atoi(split[1]);
+	(*bg)[2] = ft_atoi(split[2]);
+	if ((*bg)[0] < 0 || (*bg)[0] > 255 || (*bg)[1] < 0
+		|| (*bg)[1] > 255 || (*bg)[2] < 0 || (*bg)[2] > 255)
 		return (ft_freearray(split), 1);
 	return (ft_freearray(split), 0);
 }

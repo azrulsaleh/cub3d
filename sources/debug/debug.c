@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 17:51:15 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 12:48:33 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	print_textures(t_cub *cub)
 }
 
 //print floor and ceiling color values
-static void	print_planes(t_cub *cub)
+static void	print_bgs(t_cub *cub)
 {
 	printf("floor: ");
 	printf(GREEN "%d,%d,%d\n" RESET,
@@ -51,7 +51,7 @@ void	debug_struct(t_cub *cub)
 	if (!cub->debug_mode)
 		return ;
 	print_textures(cub);
-	print_planes(cub);
+	print_bgs(cub);
 	print_map_values(cub->map);
 	print_player(cub->player);
 	debug_map_optimized(cub->map);

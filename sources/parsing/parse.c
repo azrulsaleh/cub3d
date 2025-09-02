@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 18:19:23 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:02:11 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static bool	trim_line(char **line, char *trim)
 {
 	if (!trim)
 		return (1);
-	if (is_line_texture(trim) || is_line_color(trim))
+	if (is_line_texture(trim) || is_line_bg(trim))
 	{
 		free(*line);
 		*line = trim;
@@ -102,7 +102,11 @@ static bool	parse_content(t_cub *cub, int fd)
 	}
 	free(line);
 	if (validate_bg(cub->bg))
-		return (print_error("Insufficient color info"));
+		return (print_error("Insufficient bg/color info"));
+	if (!cub->tex.no || !cub->tex.so || !cub->tex.we || !cub->tex.ea)
+		return (print_error("Insufficient wall/texture info"));
+	if (!cub->map.point)
+		return (print_error("No map info"));
 	return (0);
 }
 
