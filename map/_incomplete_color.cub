@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/tex_arrow_up.xpm
+SO ./textures/tex_arrow_down.xpm
+WE ./textures/tex_arrow_left.xpm
+EA ./textures/tex_arrow_right.xpm
 
 F 220,100
 C 225,30,0

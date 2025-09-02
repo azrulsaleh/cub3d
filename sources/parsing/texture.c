@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/01 15:36:26 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 14:44:07 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ bool	is_line_texture(char *line)
 static bool	assign_texture(char **dest, char *line)
 {
 	char	*path;
+	int		fd;
 
 	path = ft_strtrim(line + 2, " \t\n");
 	if (!path)
 		return (print_error("Failed ft_strtrim in assign_texture"));
+	if (check_extension(path, ".xpm"))
+		return (print_error("Texture file must be .xpm type"));
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (print_error("Failed to read texture file"));
+	close(fd);
 	*dest = path;
 	return (0);
 }

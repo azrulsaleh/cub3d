@@ -6,20 +6,18 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:37:10 by azsaleh           #+#    #+#             */
-/*   Updated: 2025/09/02 13:02:11 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:59:27 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//ensures file extension is .cub
-static bool	check_extension(const char *file)
+//ensures file has correct extension type
+bool	check_extension(const char *file, const char *ext)
 {
-	const char	*ext;
 	int			i;
 	int			j;
 
-	ext = ".cub";
 	i = 0;
 	j = 0;
 	while (file[i])
@@ -33,7 +31,7 @@ static bool	check_extension(const char *file)
 	if (j == 4 && !ext[j])
 		return (0);
 	else
-		return (print_error("Invalid file extension. Expected .cub"));
+		return (1);
 }
 
 //removes space, tabs and newlines from start and end depending on line content
@@ -115,8 +113,8 @@ bool	parsing(t_cub *cub, char **av)
 {
 	int	fd;
 
-	if (check_extension(av[1]))
-		return (1);
+	if (check_extension(av[1], ".cub"))
+		return (print_error("Invalid file extension. Expected .cub"));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (print_error("Failed to read .cub file"));

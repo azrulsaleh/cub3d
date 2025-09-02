@@ -1,17 +1,17 @@
-  	EA 	  ./path_to_the_east_texture.xpm
-	NO./path_to_the_north_texture.xpm   
+  	EA 	  ./textures/tex_arrow_right.xpm
+	NO./textures/tex_arrow_up.xpm   
 	C 225,    30   ,   0
 
 
 
 
-  SO                         ./path_to_the_south_texture.xpm
+  SO                         ./textures/tex_arrow_down.xpm
 F 	220,100,0
       
  
     
    
-WE                 ./path_to_the_west_texture.xpm
+WE                 ./textures/tex_arrow_left.xpm
                                                    1                           
                                                    1                           
                                                    1                           

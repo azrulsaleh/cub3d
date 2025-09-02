@@ -6,7 +6,7 @@
 /*   By: azsaleh <azsaleh@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/09/01 18:18:42 by azsaleh          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:42:35 by azsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_cub
 
 //parse
 bool	parsing(t_cub *cub, char **av);
+bool	check_extension(const char *file, const char *ext);
 
 //texture
 bool	is_line_texture(char *line);
